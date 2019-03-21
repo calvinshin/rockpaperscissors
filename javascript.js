@@ -7,6 +7,21 @@ var computerChoices = ["r", "p", "s"];
 var userScore = 0
 var computerScore = 0
 
+function textify(character) {
+    if (character === "r") {
+        return "rock";
+    }
+    else if (character === "p") {
+        return "paper";
+    }
+    else if (character === "s") {
+        return "scissors";
+    }
+    else {
+        return "NA"
+    }
+}
+
 // This function is run whenever the user presses a key.
 document.onkeyup = function(keypress) {
 
@@ -16,14 +31,24 @@ document.onkeyup = function(keypress) {
   // Randomly chooses a choice from the options array. This is the Computer's guess.
   var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
+//   Attempt at a function to change to make userGuess and computerGuess a text value
+    // function textify(userGuess) {
+    //     if (userGuess === "r") {
+    //         var userGuessCapital = "rock"
+    //     }
+    // }
+
+
   // Alerts the key the user pressed (userGuess) IF a value of r, p, or s is selected
   if (userGuess === "r" || userGuess === "p" || userGuess === "s") {
-    alert("User guess: " + userGuess);
-  
-    // Alerts the Computer's guess.
-    alert("Computer guess: " + computerGuess);
-  
+    alert("You chose: " + textify(userGuess) + "\r\n" + "The computer chose: " + textify(computerGuess));
+
+    console.log(textify(userGuess));
+
     var outcome = userGuess + computerGuess;
+
+    // alert("You tie! \r\nhaha");
+    // use \r\n for when you want a line break in an alert
 
     if (userGuess === computerGuess) {
       alert("You tie!");
@@ -52,6 +77,9 @@ document.onkeyup = function(keypress) {
     // else if {
     //   alert("You lose!")
     // }
+  }
+  else {
+      console.log("invalid input");
   }
 
 };
