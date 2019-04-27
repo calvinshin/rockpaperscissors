@@ -1,6 +1,6 @@
 app = {
-    userScore : 0,
-    computerScore : 0,
+    userOneScore : 0,
+    userTwoScore : 0,
     options : ["Rock", "Paper", "Scissors"],
     validRPS : ["r", "p", "s"],
     key : "",
@@ -34,12 +34,19 @@ app = {
         // Converts and sets the option of userOne
         var userOne = userOneGuess
         // Sets the option of userTwo (or the computer, in this instance)
+        // When we add firebase, we essentially would replace this section if firebase is empty.... or sometihng
         var userTwo = this.computerGuess();
 
         console.log("1: " + userOne + " 2: " + userTwo);
 
         // determine the winner using integers; 0 is a tie.
-        var winner = this.winner(userOne, userTwo);
+        var whoWon = this.winner(userOne, userTwo);
+        
+        // update the score
+        this.scoreUpdate(whoWon);
+
+        // Update the page with new details
+        this.pageUpdate();
     },
     // returns a guessed value
     computerGuess : function() {
@@ -60,9 +67,40 @@ app = {
             return 1
         }
     },
+    scoreUpdate : function(whoWon) {
+        // Update the score
+        if(whoWon === 1) {
+            this.userOneScore += 1;
+        }
+        else if(whoWon === 2) {
+            this.userTwoScore += 1;
+        }
+    },
+    pageUpdate : function() {
+        // update the display on the page
+        document.getElementById("userOneScoreElement").innerHTML = this.userOneScore;
+        document.getElementById("userTwoScoreElement").innerHTML = this.userTwoScore;
+
+        // Update the previous game details
+    },
     initialize : function() {
         this.keyListener();
-    }
+    },
+    testFirebase : function() {
+        this.firebase = firebase.database();
+
+        document.addEventListener("click", function(click) {
+            var clickx = click.clientX;
+            var clicky = click.clientY;
+
+            app.firebase.ref().set({
+                clickx : clickx,
+                clicky : clicky
+            })
+        });
+    },
 }
 
+
 app.initialize();
+app.testFirebase();

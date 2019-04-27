@@ -4,11 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Rock Paper Scissors Part 2</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+  <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="javascript.js"></script>
+
 </head>
 
 <body>
@@ -23,14 +30,31 @@
     <div class="alert alert-dark m-5 mt-0">
 
       <!-- Make it look more like a scoreboard https://www.target.com/p/scoreboard-neon-sign-pillowfort-153/-/A-52859476?ref=tgt_adv_XS000000&AFID=google_pla_df&fndsrc=tgtao&CPNG=PLA_Furniture%2BShopping_Local&adgroup=SC_Furniture&LID=700000001170770pgs&network=s&device=c&location=9061272&ds_rl=1246978&ds_rl=1247068&ds_rl=1246978&gclid=CjwKCAjwycfkBRAFEiwAnLX5IdB3gsrQX4AWKBKm0HadeaszxEaS7sb5e9WlRf5uZzfzwPbcM6IHURoCQwYQAvD_BwE&gclsrc=aw.ds -->
-      Your Score: <element id="userScoreElement">0</element>
+      Your Score: <element id="userOneScoreElement">0</element>
       <br>
-      Computer's Score: <element id="computerScoreElement">0</element>
+      Computer's Score: <element id="userTwoScoreElement">0</element>
       <br>
       Last game: <element id="outcomeElement"></element>
     </div>
   </div>
 
+  
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCVWxpyexiwDYNmJ7r6yY2Wy-ziTJkrPb0",
+      authDomain: "testproject-47b49.firebaseapp.com",
+      databaseURL: "https://testproject-47b49.firebaseio.com",
+      projectId: "testproject-47b49",
+      storageBucket: "testproject-47b49.appspot.com",
+      messagingSenderId: "865714070445"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <!-- Javascript -->
+  <script src="javascript.js"></script>
 
 </body>
 
