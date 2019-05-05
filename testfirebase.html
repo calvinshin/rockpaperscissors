@@ -48,6 +48,35 @@
     // Initializing our click count at 0
     var clickCounter = 0;
 
+
+    console.log(firebase.database().ref().once("value").then(
+      function(snapshot) {
+        console.log(snapshot.val());
+        console.log(snapshot)
+        // console.log(snapshot)
+      }
+    ));
+
+
+    var db = firebase.firestore();
+    // for db need to set a collection name
+    // doc is a unique identifier within the collection. Depends on how the function calls
+    // set is an object with a key value pair
+    db.collection("categoryName").doc("ID").set({
+    })
+
+    // when you reference the actual doc, you do get
+    db.collection().get().then(function(querySnapshot) {
+      // querySnapshot is the response of the document that you're on
+    })
+
+    // if want to iterate through documents, do foreach
+    // get is the flip of doc, depending on what the response is you can for/each for the query
+
+    // wanna do the where if selecting data https://firebase.google.com/docs/firestore/query-data/queries
+
+    // can do a temporary collection on firestore... probably? Figure out how to do the documentation related to this later...
+
     // Functions
     // ================================================================================
 
